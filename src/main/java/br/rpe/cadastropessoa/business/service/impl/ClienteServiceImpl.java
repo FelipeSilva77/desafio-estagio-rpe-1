@@ -19,7 +19,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Cliente create(Cliente cliente) {
-        final Cliente clienteUp = findByCpf(cliente.getCpf());
+        final var clienteUp = findByCpf(cliente.getCpf());
         if (clienteUp != null) {
             throw new IllegalStateException("Cliente ja cadastrado!");
         }
@@ -27,8 +27,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente update(Cliente cliente) {
-        Cliente clienteUp = findById(cliente.getId());
+    public Cliente update(Cliente cliente, Long id) {
+        final var clienteUp = findById(id);
 
         clienteUp.setEndereco(cliente.getEndereco());
         clienteUp.setCpf(cliente.getCpf());
@@ -41,7 +41,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void delete(Long id) {
-        if (findById(id) == null || id == null) {
+        if ( id == null || findById(id) == null) {
             throw new NoSuchElementException("Cliente inexistente!");
         }
         clienteRepository.deleteById(id);

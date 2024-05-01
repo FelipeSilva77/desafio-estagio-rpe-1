@@ -45,7 +45,7 @@ class FuncionarioServiceTest {
         when(funcionarioMock.get(0)).thenReturn(
                 newFuncionario("Maria", new Endereco())
         );
-        when(funcionarioService.update(any(Funcionario.class))).thenReturn(
+        when(funcionarioService.update(any(Funcionario.class), anyLong())).thenReturn(
                 newFuncionario("João", new Endereco())
         );
 
@@ -53,7 +53,7 @@ class FuncionarioServiceTest {
         Funcionario funcionario = funcionarioMock.get(0);
         funcionario.setNome(upName);
 
-        Funcionario clientUp = funcionarioService.update(funcionario);
+        Funcionario clientUp = funcionarioService.update(funcionario, 1L);
 
         Assertions.assertEquals(upName, clientUp.getNome());
     }

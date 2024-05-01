@@ -4,7 +4,6 @@ import br.rpe.cadastropessoa.domain.enums.TipoCliente;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.time.LocalDate;
@@ -19,7 +18,6 @@ public class Cliente extends Pessoa {
     private static final long serialVersionUID = 7773220926013539041L;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataUltimoServico;
 
     @Enumerated(EnumType.STRING)

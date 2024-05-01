@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface FuncionarioService {
 
-    Funcionario create(Funcionario client);
+    Funcionario create(Funcionario funcionario);
 
-    Funcionario update(Funcionario client);
+    Funcionario update(Funcionario funcionario, Long id);
 
     void delete(Long id);
 

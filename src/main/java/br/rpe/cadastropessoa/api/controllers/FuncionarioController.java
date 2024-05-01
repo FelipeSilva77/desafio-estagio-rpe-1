@@ -43,17 +43,8 @@ public class FuncionarioController {
     @PutMapping({"{id}"})
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody FuncionarioDto dto) {
         try {
-            dto.setId(id);
-
-            Long employeeId = dto.getId();
-            Funcionario funcionario = funcionarioService.findById(employeeId);
-
-            if (funcionario == null) {
-                throw new IllegalStateException();
-            }
-
             Funcionario entity = converterService.dtoToFuncionario(dto);
-            entity = funcionarioService.update(entity);
+            entity = funcionarioService.update(entity, id);
             dto = converterService.funcionarioToDto(entity);
 
             return ResponseEntity.ok(dto);

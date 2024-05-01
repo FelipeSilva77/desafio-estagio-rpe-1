@@ -5,6 +5,7 @@ import br.rpe.cadastropessoa.api.presentation.dto.FuncionarioDto;
 import br.rpe.cadastropessoa.domain.entity.Cliente;
 import br.rpe.cadastropessoa.domain.entity.Funcionario;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,12 +19,10 @@ public class ConverterService {
 
     public Funcionario dtoToFuncionario(FuncionarioDto dto) {
         return mapper.map(dto, Funcionario.class);
-
     }
 
     public FuncionarioDto funcionarioToDto(Funcionario entity) {
         return mapper.map(entity, FuncionarioDto.class);
-
     }
 
     public Cliente dtoToCliente(ClienteDto dto) {

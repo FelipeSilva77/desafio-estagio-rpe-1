@@ -45,13 +45,13 @@ class ClienteServiceTest {
     @Test
     void testUpdateName() {
         when(clientsMock.get(0)).thenReturn(newCliente("Maria", new Endereco()));
-        when(clienteService.update(any(Cliente.class))).thenReturn(newCliente("João", new Endereco()));
+        when(clienteService.update(any(Cliente.class), anyLong())).thenReturn(newCliente("João", new Endereco()));
 
         String upName = "João";
         Cliente cliente = clientsMock.get(0);
         cliente.setNome(upName);
 
-        Cliente clienteUp = clienteService.update(cliente);
+        Cliente clienteUp = clienteService.update(cliente, 1L);
 
         assertEquals(upName, clienteUp.getNome());
     }

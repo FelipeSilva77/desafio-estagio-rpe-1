@@ -8,7 +8,7 @@ public interface ClienteService {
 
     Cliente create(Cliente cliente);
 
-    Cliente update(Cliente cliente);
+    Cliente update(Cliente cliente, Long id);
 
     void delete(Long id);
 

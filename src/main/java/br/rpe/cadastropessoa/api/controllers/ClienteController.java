@@ -42,14 +42,9 @@ public class ClienteController {
     @PutMapping({"{id}"})
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody ClienteDto dto) {
         try {
-            Cliente cliente = clienteService.findById(id);
 
-            if (cliente == null) {
-                throw new IllegalStateException();
-            }
-
-            cliente = converterService.dtoToCliente(dto);
-            cliente = clienteService.update(cliente);
+            var cliente = converterService.dtoToCliente(dto);
+            cliente = clienteService.update(cliente, id);
             dto = converterService.clienteToDto(cliente);
 
             return ResponseEntity.ok(dto);

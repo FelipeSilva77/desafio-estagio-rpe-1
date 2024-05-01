@@ -27,13 +27,13 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @Override
-    public Funcionario update(Funcionario funcionario) {
+    public Funcionario update(Funcionario funcionario, Long id) {
 
-        final var funcionarioUp = findById(funcionario.getId());
+        final var funcionarioUp = findById(id);
         funcionarioUp.setEndereco(funcionario.getEndereco());
         funcionarioUp.setCpf(funcionario.getCpf());
         funcionarioUp.setNome(funcionario.getNome());
-        funcionarioUp.setStatus(Status.ATIVO);
+        funcionarioUp.setStatus(funcionario.getStatus());
         funcionarioUp.setTelefone(funcionario.getTelefone());
         funcionarioUp.setDataContratacao(funcionario.getDataContratacao());
         funcionarioUp.setFuncao(funcionario.getFuncao());
