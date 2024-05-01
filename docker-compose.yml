@@ -1,0 +1,38 @@
+services:
+  app:
+    image: felipe/cadastropessoa
+    ports:
+      - "8082:8081"
+    networks:
+      - cadastro_pessoa
+    depends_on:
+      - db
+  db:
+    image: postgres:13-alpine
+    restart: always
+    tty: true
+    volumes:
+      - .pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+    ports:
+      - "15432:5432"
+    networks:
+      - cadastro_pessoa
+
+  pgadmin:
+    image: dpage/pgadmin4:7.8
+    tty: true
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@user.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      - "9000:80"
+    depends_on:
+      - db
+    networks:
+      - cadastro_pessoa
+
+networks:
+  cadastro_pessoa:
